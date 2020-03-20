@@ -1,13 +1,19 @@
 doctype html
 html(lang="en")
   head
-    title= pageTitle
+    title= "Voici le contenu du fichier"
+    style
+      include style.css
   body
-    table
+    h1 Voici le contenu du fichier :
+    if error
+      p error
+    else 
+      table
         tr
             th Identifiant
             th Ville
-        each valInfo, index in allInfos
+        each infoObj, indexInfo in allInfos
             tr
-            each val, indexTest in valInfo
-                td= val
+            each infoObjValues, index in infoObj
+                td= infoObjValues

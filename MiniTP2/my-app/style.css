@@ -1,0 +1,19 @@
+table {
+    font-family: sans-serif;
+}
+
+th {
+    text-align: left;
+    background-color: mediumslateblue;
+    color: white;
+    padding: 5px;
+}
+
+tr {
+    background-color: lightblue;
+}
+
+td {
+    padding: 5px;;
+    width: 200px;
+}
