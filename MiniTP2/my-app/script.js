@@ -18,7 +18,12 @@ const server = http.createServer((req, res) => {
         if(filename !== "" && filename !== null && filename !== undefined) { 
             fs.readFile('./' + filename,'utf8', (err, data) => {
                 if(err) {
-                    console.log(err);
+                    const generatedTemplate = compiledFunction({
+                        error: "Fichier introuvable"
+                    })
+                    res.statusCode = 200;
+                    res.setHeader("Content-Type","text/html");
+                    res.end(generatedTemplate);
                     return
                 } 
                 let jsonData = {"infos" : {}};
@@ -41,12 +46,19 @@ const server = http.createServer((req, res) => {
             })
         } else {
             const generatedTemplate = compiledFunction({
-                error: "Indiquez dans l'url le nom d'un fichier comme ceci : filename=data.csv"
+                error: "Fichier introuvable"
             })
             res.statusCode = 200;
             res.setHeader("Content-Type","text/html");
             res.end(generatedTemplate);
         }
+    } else {
+        const generatedTemplate = compiledFunction({
+            error: "Indiquez dans l'url le nom d'un fichier comme ceci : filename=data.csv"
+        })
+        res.statusCode = 200;
+        res.setHeader("Content-Type","text/html");
+        res.end(generatedTemplate);
     }
 })
 
