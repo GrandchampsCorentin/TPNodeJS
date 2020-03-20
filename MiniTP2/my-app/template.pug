@@ -1,0 +1,13 @@
+doctype html
+html(lang="en")
+  head
+    title= pageTitle
+  body
+    table
+        tr
+            th Identifiant
+            th Ville
+        each valInfo, index in allInfos
+            tr
+            each val, indexTest in valInfo
+                td= val
