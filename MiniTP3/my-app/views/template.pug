@@ -1,0 +1,19 @@
+doctype html
+html(lang="en")
+  head
+    title= "Voici le contenu du fichier"
+    style
+      include ../public/style.css
+  body
+    h1 Voici le contenu du fichier :
+    if error
+      p #{error}
+    else 
+      table
+        tr
+            th Identifiant
+            th Ville
+        each infoObj, indexInfo in allInfos
+            tr
+            each infoObjValues, index in infoObj
+                td= infoObjValues
