@@ -19,12 +19,17 @@ html(lang="en")
                 td= infoObj.name
                 td
                   form(method="post" action='/city/' + infoObj._id)
+                    input(type="text", name="newName", id="newName",placeholder="Nouveau nom")
                     input(type='hidden' name='action' value="PUT")
-                    input(type='submit', value="Supprimer")
+                    input(type='submit', value="Modifier")
                 td
                   form(method="post" action='/city/' + infoObj._id)
                     input(type='hidden' name='action' value="DELETE")
                     input(type='submit', value="Supprimer")
+    
+    br
+    h1 Créer une nouvelle ville
+    br
     form(action="/city", method="post")
       label(for="cityName") Nom de la nouvelle ville : 
       input(type="text", id="cityName", name="name")

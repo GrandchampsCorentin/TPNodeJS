@@ -70,9 +70,8 @@ app.post('/city', (req,res) => {
 });
 
 app.post('/city/:id', (req,res) => {
-    console.log(req.params.id);
     // FAIRE DU JAVASCRIPT POUR FAIRE LE DELETE ET LE PUT
-    if(req.params.action === "DELETE") {
+    if(req.body.action === "DELETE") {
         City.deleteOne({ _id: req.params.id }, function (err) {
             if (err) {
                 return handleError(err);
@@ -80,8 +79,8 @@ app.post('/city/:id', (req,res) => {
                 res.redirect("/cities");
             }
         });
-    } else if(req.params.action === "PUT") {
-        City.updateOne({ _id: req.params.id }, function(err, res) {
+    } else if(req.body.action === "PUT") {
+        City.updateOne({ _id: req.params.id}, {$set : {name: req.body.newName}}, function(err) {
             if (err) {
                 return handleError(err);
             } else {
